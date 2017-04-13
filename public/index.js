@@ -1,7 +1,7 @@
 let dbItems;
 let sorted = false;
 
-$('.garage-door').on('click', () => {
+$('.clicker').on('click', () => {
   $('.garage-door').toggle('.hide')
 })
 
