@@ -24,54 +24,50 @@ describe('GET /', function() {
   });
 });
 
-// describe('GET /api/folders', function() {
-//   beforeEach(function(done){
-//   const folders = [{name: 'cat vids'},
-//                   {name: 'recipes'},
-//                   {name: 'farmers only dating sites'}]
-//   app.locals.folders = folders;
-//   done();
-// });
-//
-// afterEach(function(done){
-//   app.locals.folders = [];
-//   done();
-// });
-//
-// it('should return all folders', function(done) {
-//       chai.request(app)
-//       .get('/api/folders')
-//       .end(function(err, res) {
-//         if (err) { done(err); }
-//         expect(res).to.have.status(200);
-//         expect(res).to.be.json;
-//         expect(res.body).to.be.a('object');
-//         expect(res.body).to.have.property('name');
-//         done();
-//       });
-//     });
-//   });
-//
-//   describe('POST /api/folders', function () {
-//         afterEach(function(done) {
-//           app.locals.folders = [];
-//           done();
-//         });
-//
-//         it('should add a new folder', function(done) {
-//         chai.request(app)
-//         .post('/api/folders')
-//         .send({ name: 'Dr. Phil fan fiction' })
-//         .end(function(err, res) {
-//           if(err) { done(err); }
-//           expect(res).to.have.status(200);
-//           expect(res).to.be.json;
-//           expect(res.body).to.be.a('object');
-//           expect(res.body).to.have.property('name');
-//           done();
-//         });
-//       });
-//     });
+describe('GET /api/v1/items', function() {
+
+  it('should return all items', function(done) {
+      chai.request(app)
+      .get('/api/v1/items')
+      .end(function(err, res) {
+        if (err) { done(err); }
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('array');
+        expect(res.body).to.have.length(2);
+        done();
+      });
+    });
+  });
+
+  it('should return an error if the url does not exist', (done) => {
+    chai.request(app)
+    .get('/api/v1/item')
+    .end((err, res) => {
+      expect(res).to.have.status(404);
+      expect(res.body).to.be.a('object');
+      done()
+    })
+  })
+
+  describe('POST /api/v1/items', function () {
+
+        it('should add a new item', function(done) {
+        chai.request(app)
+        .post('/api/v1/items')
+        .send({ name: 'josh', reason: 'cool', clean: 'dusty' })
+        .end(function(err, res) {
+          if(err) { done(err); }
+          expect(res).to.have.status(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.a('object');
+          expect(res.body).to.have.property('name');
+          expect(res.body).to.have.property('reason');
+          expect(res.body).to.have.property('clean');
+          done();
+        });
+      });
+    });
 //
 // describe('GET /api/folders/:folderId', function() {
 //   beforeEach(function(done){
