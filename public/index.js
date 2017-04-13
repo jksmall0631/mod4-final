@@ -1,6 +1,10 @@
 let dbItems;
 let sorted = false;
 
+$('.clicker').on('click', () => {
+  $('.garage-door').toggle('.hide')
+})
+
 const grabFromDb = () => {
   const url = 'http://localhost:3000/api/v1/items'
   fetch(url)
