@@ -1,16 +1,20 @@
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const bodyParser = require('body-parser');
 
 app.set('port', process.env.PORT || 3000)
 
 app.locals.title = 'Garage Thing'
 app.locals.items = [
   {id:1, name:'dead rat', reason: 'don\'t want to touch it', clean: 'rancid'},
-  {id:2, name:'dead rat', reason: 'don\'t want to touch it', clean: 'rancid'},
+  {id:2, name:'hoopdie', reason: 'dope old car', clean: 'dusty'},
 ]
+app.locals.counter = 2
 
 app.use(express.static('public'))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -35,6 +39,17 @@ app.get('/api/v1/items/:id', (req, res) => {
       res.json(item)
     }
   })
+})
+
+app.post('/api/v1/items', (req, res) => {
+  const {name, reason, clean} = req.body
+  const item = {id: app.locals.counter++, name, reason, clean}
+  if(name && reason && clean){
+    app.locals.items.push(item)
+    res.json(item)
+  }else{
+    console.log('bla')
+  }
 })
 
 app.listen(app.get('port'), () => {

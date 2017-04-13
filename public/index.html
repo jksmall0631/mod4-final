@@ -12,22 +12,33 @@
       </div>
       <div class='content'>
         <section class='input-section'>
-          <h2>Add an Item!</h2>
           <form>
+            <h2>Add an Item!</h2>
             Name:<br>
-            <input type='text' name='lastname'><br>
+              <input class='name-input' placeholder='Name'><br>
             Reason:<br>
-            <input type='textfield' name='lastname'><br>
+              <input class='reason-input' placeholder='Reason'><br>
             Cleanliness:<br>
-            <select>
-              <option value='sparkling'>sparkling</option>
-              <option value='dusty'>dusty</option>
-              <option value='rancid'>rancid</option>
-            </select>
+              <select class='clean-input'>
+                <option value='sparkling'>sparkling</option>
+                <option value='dusty'>dusty</option>
+                <option value='rancid'>rancid</option>
+              </select>
             <input type='submit' class='submit'></input>
           </form>
         </section>
         <section class='item-section'>
+          <div class='items'></div>
+          <div class='counter'>
+            Total Items:
+              <div class='total-counter'></div>
+            Sparkling Items:
+              <div class='sparkling-counter'></div>
+            Dusty Items:
+              <div class='dusty-counter'></div>
+            Rancid Items:
+              <div class='rancid-counter'></div>
+          </div>
         </section>
       </div>
     </div>
