@@ -11,19 +11,19 @@ describe('Server', () => {
   });
 });
 
-// describe('GET /', function() {
-//   it('should return a 200 and html', function(done) {
-//     chai.request(app)
-//     .get('/')
-//     .end(function(err, res) {
-//       if(err) { done(err); }
-//       expect(res).to.have.status(200);
-//       expect(res).to.be.html;
-//       done();
-//     });
-//   });
-// });
-//
+describe('GET /', function() {
+  it('should return a 200 and html', function(done) {
+    chai.request(app)
+    .get('/')
+    .end(function(err, res) {
+      if(err) { done(err); }
+      expect(res).to.have.status(200);
+      expect(res).to.be.html;
+      done();
+    });
+  });
+});
+
 // describe('GET /api/folders', function() {
 //   beforeEach(function(done){
 //   const folders = [{name: 'cat vids'},

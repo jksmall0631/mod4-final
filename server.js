@@ -29,14 +29,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/v1/items', (req, res) => {
-  res.json(app.locals.items)
+  res.status(200).json(app.locals.items)
 })
 
 app.get('/api/v1/items/:id', (req, res) => {
   const {id} = req.params
   const item = app.locals.items.map(item => {
     if(item.id == id){
-      res.json(item)
+      res.status(200).json(item)
     }
   })
 })
@@ -46,9 +46,9 @@ app.post('/api/v1/items', (req, res) => {
   const item = {id: app.locals.counter++, name, reason, clean}
   if(name && reason && clean){
     app.locals.items.push(item)
-    res.json(item)
+    res.status(200).json(item)
   }else{
-    console.log('bla')
+    res.sendStatus(422)
   }
 })
 
