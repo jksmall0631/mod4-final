@@ -1,8 +1,11 @@
+let dbItems;
+
 const grabFromDb = () => {
   const url = 'http://localhost:3000/api/v1/items'
   fetch(url)
   .then(items => items.json())
   .then(items => {
+    dbItems = items
     clearItems()
     renderItems(items)
   })
@@ -11,7 +14,6 @@ const grabFromDb = () => {
 grabFromDb()
 
 const countItems = (items) => {
-  $('.total-counter').append('<p>' + items.length + '</p>')
   let counter = items.reduce((acc, item) => {
     if(acc[item.clean]){
       acc[item.clean]++
@@ -20,7 +22,14 @@ const countItems = (items) => {
     }
     return acc;
   }, {})
-  console.log(counter)
+  renderCounts(items, counter)
+}
+
+const renderCounts = (items, counter) => {
+  $('.total-counter').append('<p>' + items.length + '</p>')
+  $('.sparkling-counter').append('<p>' + counter.sparkling + '</p>')
+  $('.dusty-counter').append('<p>' + counter.dusty + '</p>')
+  $('.rancid-counter').append('<p>' + counter.rancid + '</p>')
 }
 
 const clearItems = () => {
@@ -33,9 +42,23 @@ const clearItems = () => {
 
 const renderItems = (items) => {
   items.map(item => {
-    $('.items').append('<p>' + item.name + '</p>')
+    console.log(item.id)
+    $('.items').append('<p class="item" id=' + item.id + '>' + item.name + '</p>')
   })
   countItems(items)
+}
+
+$('.items').on('click', '.item', (e) => {
+  console.log(e.target.id)
+  renderDescription(e.target.id)
+})
+
+const renderDescription = (targetId) => {
+  dbItems.forEach(item => {
+    if(item.id == targetId){
+      $('.item-description').append('<h3>' + item.name + '</h3><p>' + item.reason + '</p><p>' + item.clean + '</p>')
+    }
+  })
 }
 
 $('.submit').on('click', (e) => {
