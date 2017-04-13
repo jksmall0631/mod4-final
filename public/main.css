@@ -107,3 +107,11 @@ body {
 .item-description h3 {
   font-size: 30px;
 }
+
+.garage-door {
+  text-align: center;
+}
+
+.garage-door h1 {
+  margin-top: 200px;
+}
