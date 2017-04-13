@@ -49,7 +49,7 @@ const renderItems = (items) => {
 }
 
 $('.items').on('click', '.item', (e) => {
-  console.log(e.target.id)
+  $('.item-description').html('')
   renderDescription(e.target.id)
 })
 
@@ -59,6 +59,10 @@ const renderDescription = (targetId) => {
       $('.item-description').append('<h3>' + item.name + '</h3><p>' + item.reason + '</p><p>' + item.clean + '</p>')
     }
   })
+}
+
+const sort = () => {
+
 }
 
 $('.submit').on('click', (e) => {
