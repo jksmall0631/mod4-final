@@ -1,4 +1,5 @@
 let dbItems;
+let sorted = false;
 
 const grabFromDb = () => {
   const url = 'http://localhost:3000/api/v1/items'
@@ -42,7 +43,6 @@ const clearItems = () => {
 
 const renderItems = (items) => {
   items.map(item => {
-    console.log(item.id)
     $('.items').append('<p class="item" id=' + item.id + '>' + item.name + '</p>')
   })
   countItems(items)
@@ -61,9 +61,24 @@ const renderDescription = (targetId) => {
   })
 }
 
-const sort = () => {
-
-}
+$('.sort').on('click', () => {
+  let sortedItems
+  if(sorted === false){
+    sortedItems = dbItems.sort((a, b) => {
+      if(a.name.toLowerCase()<b.name.toLowerCase())return -1
+      if(a.name.toLowerCase()>b.name.toLowerCase())return 1
+    })
+    sorted = true;
+  }else{
+    sortedItems = dbItems.sort((a, b) => {
+      if(a.name.toLowerCase()<b.name.toLowerCase())return 1
+      if(a.name.toLowerCase()>b.name.toLowerCase())return -1
+    })
+    sorted = false;
+  }
+  clearItems()
+  renderItems(sortedItems);
+})
 
 $('.submit').on('click', (e) => {
   e.preventDefault()
@@ -73,6 +88,7 @@ $('.submit').on('click', (e) => {
 
   createNewItem(name, reason, clean)
   grabFromDb()
+  sorted = false;
 })
 
 const createNewItem = (name, reason, clean) => {
