@@ -8,7 +8,7 @@ $('.clicker').on('click', () => {
 })
 
 const grabFromDb = () => {
-  const url = 'http://localhost:3000/api/v1/items'
+  const url = '/api/v1/items'
   fetch(url)
   .then(items => items.json())
   .then(items => {
@@ -98,7 +98,7 @@ $('.submit').on('click', (e) => {
 })
 
 const createNewItem = (name, reason, clean) => {
-  const url = 'http://localhost:3000/api/v1/items'
+  const url = '/api/v1/items'
 
   fetch(url, {
     method: 'POST',
