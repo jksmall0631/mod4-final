@@ -1,0 +1,113 @@
+.garage-door {
+  position: absolute;
+  background-color: pink;
+  width: 100%;
+  height: 100%;
+  /*-webkit-transition: -webkit-transform 5s ease-in;
+  transition: transform 5s ease-in;
+  transition-delay: 2s;*/
+}
+
+.hide {
+  top: -100vh;
+}
+
+.clicker-cont {
+  top: 88vh;
+  margin: auto;
+  position: relative;
+  width: 200px;
+  height: 70px;
+  background-color: black;
+  border-radius: 5px;
+  padding-top: 1px;
+  display: flex;
+  align-items: baseline;
+}
+
+.clicker {
+  width: 100px;
+  height: 30px;
+  background-color: lightgrey;
+  margin: 10px;
+  display: inline-block;
+}
+
+.nothin {
+  width: 40px;
+  height: 30px;
+  background-color: lightgrey;
+  display: inline-block;
+}
+
+.content {
+  margin: -50px auto;
+  max-width: 80%;
+}
+
+.input-section {
+  display: inline-block;
+  width: 59%;
+  height: 100%;
+  vertical-align: top;
+}
+
+.input-section input, .input-section select, .input-section h2{
+  width: 90%;
+  height: 30px;
+  margin: 10px;
+  margin-left: 0px;
+  padding-left: 4px;
+}
+
+.submit {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.item-section {
+  display: inline-block;
+  width: 40%;
+}
+
+.items {
+  height: 75vh;
+  text-align: center;
+  overflow: scroll;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  margin-top: 10px;
+}
+
+.item {
+  padding-bottom: 20px;
+}
+
+.counter div {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.sort {
+  width: 100%;
+}
+
+.total-counter, .sparkling-counter, .dusty-counter, .rancid-counter, .counter p {
+  display: inline-block;
+}
+
+.item-description p {
+  margin-top: 20px;
+}
+
+.item-description h3 {
+  font-size: 30px;
+}
+
+.garage-door {
+  text-align: center;
+}
+
+.garage-door h1 {
+  margin-top: 200px;
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha ./tests/**.js || true"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/jksmall0631/mod4-final/issues"
   },
-  "homepage": "https://github.com/jksmall0631/mod4-final#readme"
+  "homepage": "https://github.com/jksmall0631/mod4-final#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "chai-jquery": "^2.0.0",
+    "express": "^4.15.2",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0"
+  }
 }
