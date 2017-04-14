@@ -15,7 +15,7 @@ describe('countItems', () => {
       {id:2, name:'hoopdie', reason: 'dope old car', clean: 'dusty'}
     ]
     const count = {sparkling:5, dusty:3, rancid:1};
-    
+
     assert.equal(countItems(array), count)
   })
 })

@@ -1,5 +1,3 @@
-const {} = require('../public/index.js');
-
 let dbItems;
 let sorted = false;
 
