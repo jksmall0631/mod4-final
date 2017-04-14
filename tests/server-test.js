@@ -27,16 +27,15 @@ describe('GET /', function() {
 describe('GET /api/v1/items', function() {
 
   it('should return all items', function(done) {
-      chai.request(app)
-      .get('/api/v1/items')
-      .end(function(err, res) {
-        if (err) { done(err); }
-        expect(res).to.have.status(200);
-        expect(res).to.be.json;
-        expect(res.body).to.be.a('array');
-        expect(res.body).to.have.length(2);
-        done();
-      });
+    chai.request(app)
+    .get('/api/v1/items')
+    .end(function(err, res) {
+      if (err) { done(err); }
+      expect(res).to.have.status(200);
+      expect(res).to.be.json;
+      expect(res.body).to.be.a('array');
+      expect(res.body).to.have.length(2);
+      done();
     });
   });
 
@@ -47,27 +46,40 @@ describe('GET /api/v1/items', function() {
       expect(res).to.have.status(404);
       expect(res.body).to.be.a('object');
       done()
-    })
-  })
+    });
+  });
+
+});
 
   describe('POST /api/v1/items', function () {
 
-        it('should add a new item', function(done) {
-        chai.request(app)
-        .post('/api/v1/items')
-        .send({ name: 'josh', reason: 'cool', clean: 'dusty' })
-        .end(function(err, res) {
-          if(err) { done(err); }
-          expect(res).to.have.status(200);
-          expect(res).to.be.json;
-          expect(res.body).to.be.a('object');
-          expect(res.body).to.have.property('name');
-          expect(res.body).to.have.property('reason');
-          expect(res.body).to.have.property('clean');
-          done();
-        });
+    it('should add a new item', function(done) {
+      chai.request(app)
+      .post('/api/v1/items')
+      .send({ name: 'josh', reason: 'cool', clean: 'dusty' })
+      .end(function(err, res) {
+        if(err) { done(err); }
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('object');
+        expect(res.body).to.have.property('name');
+        expect(res.body).to.have.property('reason');
+        expect(res.body).to.have.property('clean');
+        done();
       });
     });
+
+    it('should error out if no body is entered', (done) => {
+      chai.request(app)
+      .post('/api/v1/items')
+      .end((err, res) => {
+        expect(res).to.have.status(422);
+        expect(res).to.be.a('object')
+        done();
+      });
+    });
+
+  });
 //
 // describe('GET /api/folders/:folderId', function() {
 //   beforeEach(function(done){
